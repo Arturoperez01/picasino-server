@@ -16,7 +16,7 @@ const generatedModel = {
       * servicio
       */
     const servicioSchema = new mongoose.Schema({
-      nombre: {
+      name: {
         type: "String"
       },
       //RELATIONS

@@ -64,7 +64,7 @@ const generatedModel = {
       * roles
       */
     const rolesSchema = new mongoose.Schema({
-      nombre: {
+      name: {
         type: "String"
       },
       //RELATIONS
