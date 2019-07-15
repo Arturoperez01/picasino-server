@@ -37,16 +37,24 @@ const customModel = {
    * Customize here your schema with custom attributes
    * 
    * EXAMPLE:
-    
+   */
     init() {
       let schema = UserModelGenerated.init();
   
       schema.add({
-        extraCustomField: Object
+        servicios: [{
+          type: "String"
+        }],
+        perfiles: [{
+          type: "String"
+        }],
+        email: {
+          type: "String"
+        }
       });
     },
      
-   */
+   
 
 
   /**
