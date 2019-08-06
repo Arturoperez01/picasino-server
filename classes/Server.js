@@ -58,9 +58,10 @@ import SecurityController from "../controllers/SecurityController";
 import Database_Newtest_db from "./Database_Newtest_db.js";
 
 // Controllers
-import UserController from "../controllers/Newtest_db/UserController";
-import RolesController from "../controllers/Newtest_db/RolesController";
+import UserController     from "../controllers/Newtest_db/UserController";
+import RolesController    from "../controllers/Newtest_db/RolesController";
 import ServicioController from "../controllers/Newtest_db/ServicioController";
+import EventoController   from "../controllers/Newtest_db/EventoController";
 
 // End Import Controllers
 
@@ -136,6 +137,7 @@ class Server {
     UserController.init(router);
     RolesController.init(router);
     ServicioController.init(router);
+    EventoController.init(router);
 		 // End Init Controllers
 
     this.app.use("/", router);

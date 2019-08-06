@@ -64,9 +64,6 @@ const generatedModel = {
       * User
       */
     const userSchema = new mongoose.Schema({
-      mail: {
-        type: "String"
-      },
       name: {
         type: "String"
       },

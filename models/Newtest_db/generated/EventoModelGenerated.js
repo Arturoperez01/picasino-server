@@ -4,7 +4,15 @@ import mongoose, { Schema } from "mongoose";
 
 // Logger
 import Logger from "../../../classes/Logger";
-
+import { stringify } from "querystring";
+const TurnoSchema = new Schema({ 
+                                  fecha: Date,
+                                  horaIni: String,
+                                  horaFin: String,
+                                  cupo: String,
+                                  estado: String,
+                                  inscripciones: Number
+                                  });
 const generatedModel = {
   /**
    * Init  schema
@@ -13,31 +21,43 @@ const generatedModel = {
     const db = Database.getConnection();
 
     /**
-      * servicio
+      * evento
       */
-    const servicioSchema = new mongoose.Schema({
-      nombre: {
+    const eventoSchema = new mongoose.Schema({
+      titulo: {
         type: "String"
       },
+      descripcion: {
+        type: "String"
+      },
+      servicio: {
+        type: "String"
+      },
+      perfiles: [{
+        type: "String"
+      }],
+      turno: [{
+        type: TurnoSchema
+      }]
       //RELATIONS
       
       
       //EXTERNAL RELATIONS
       /*
-      evento_servicio: {
+      evento_evento: {
         type: Schema.ObjectId,
         ref : "evento"
       },
-      user_servicio: [{
+      user_evento: [{
         type: Schema.ObjectId,
         ref : "User"
       }],
       */
     });
 
-    generatedModel.setModel(db.connection.model("Servicio", servicioSchema));
+    generatedModel.setModel(db.connection.model("Evento", eventoSchema));
 
-    return servicioSchema;
+    return eventoSchema;
   },
 
   /**
@@ -61,9 +81,9 @@ const generatedModel = {
 
 
   /**
-  * servicioModel.create
+  * eventoModel.create
   *   @description CRUD ACTION create
-  *   @param servicio obj Object to insert
+  *   @param evento obj Object to insert
   *
   */
   async create(item) {
@@ -72,9 +92,9 @@ const generatedModel = {
   },
   
   /**
-  * servicioModel.delete
+  * eventoModel.delete
   *   @description CRUD ACTION delete
-  *   @param ObjectId id Id servicio
+  *   @param ObjectId id Id evento
   *
   */
   async delete(id) {
@@ -82,10 +102,10 @@ const generatedModel = {
   },
   
   /**
-  * servicioModel.get
+  * eventoModel.get
   *   @description CRUD ACTION get
-  *   @param ObjectId id Id servicio
-  *   @returns servicio
+  *   @param ObjectId id Id evento
+  *   @returns evento
   *
   */
   async get(id) {
@@ -93,9 +113,9 @@ const generatedModel = {
   },
   
   /**
-  * servicioModel.list
+  * eventoModel.list
   *   @description CRUD ACTION list
-  *   @returns ARRAY OF servicio
+  *   @returns ARRAY OF evento
   *
   */
   async list() {
@@ -103,18 +123,16 @@ const generatedModel = {
   },
   
   /**
-  * servicioModel.update
+  * eventoModel.update
   *   @description CRUD ACTION update
-  *   @param ObjectId id Id servicio
-  *   @returns servicio
+  *   @param ObjectId id Id evento
+  *   @returns evento
   *
   */
   async update(item) { 
     return await generatedModel.model.findOneAndUpdate({ _id: item._id }, item, {'new': true});
   },
   
-
-
 };
 
 export default generatedModel;

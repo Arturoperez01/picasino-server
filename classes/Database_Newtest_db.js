@@ -41,6 +41,7 @@ import properties from "../properties.js";
 import UserModel from "../models/Newtest_db/UserModel";
 import RolesModel from "../models/Newtest_db/RolesModel";
 import ServicioModel from "../models/Newtest_db/ServicioModel";
+import EventoModel from "../models/Newtest_db/EventoModel";
 
 // End Import Models
 
@@ -58,7 +59,8 @@ class Database {
 
 		UserModel.init();
 		RolesModel.init();
-		ServicioModel.init();
+    ServicioModel.init();
+    EventoModel.init();
  // End Init Models
   }
 
